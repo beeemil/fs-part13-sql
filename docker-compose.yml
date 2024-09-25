@@ -1,0 +1,22 @@
+services:
+  postgres:
+    image: postgres:16.1
+    container_name: fs-db
+    environment:
+      POSTGRES_USER: admin1
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: fullstack
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - my_network
+
+volumes:
+  pgdata:
+    driver: local
+
+networks:
+  my_network:
+    driver: bridge
